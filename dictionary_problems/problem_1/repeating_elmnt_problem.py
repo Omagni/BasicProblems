@@ -9,9 +9,27 @@ than 3 whose first the occurring index is 3.
 
 """
 
-arr = [1, 5, 3, 4, 3, 5, 6]
 
-for _ in arr:
-    for x in arr:
-        if x == _:
-            print(f"{x} and {_}")
+#arr = [1, 5, 3, 4, 3, 5, 6]
+arr = [1, 2, 3, 4, 9, 2, 7]
+
+
+#pretty difficult
+def first_repeat_el(arr):
+    seen = {}
+    min_i = len(arr)
+
+    for i, val in enumerate(arr):
+        if val in seen:
+            if seen[val] < min_i:
+                min_i = seen[val]
+        else:
+            seen[val] = i
+
+    if min_i == len(arr):
+        return -1
+    else:
+        return min_i + 1
+
+
+print(first_repeat_el(arr))
